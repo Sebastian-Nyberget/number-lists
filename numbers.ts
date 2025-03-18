@@ -1,7 +1,7 @@
 import { readFileSync } from "fs";
 
-const smallTest = './LargeTestList.txt';
-const list = readFileSync(smallTest, 'utf-8');
+const filePath = './LargeTestList.txt';
+const list = readFileSync(filePath, 'utf-8');
 
 const numbers = list.split('\n').map(Number);
 
