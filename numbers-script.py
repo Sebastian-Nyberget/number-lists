@@ -1,4 +1,4 @@
-with open('SmallTestList.txt', 'r') as file:
+with open('LargeTestList.txt', 'r') as file:
     numbers = [int(line) for line in file]
 
 print(f"Sum: {sum(numbers)}")
