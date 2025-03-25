@@ -1,12 +1,18 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
+using System.Diagnostics;
 
 class Program
 {
     static void Main()
     {
         string path = Path.Combine("..", "LargeTestList.txt");
+
+        Stopwatch stopwatch = new Stopwatch();
+        stopwatch.Start();
+
+        long memoryBefore = GC.GetTotalMemory(true);
 
         if (File.Exists(path))
         {
@@ -36,5 +42,11 @@ class Program
         {
             Console.WriteLine("Filen ble ikke funnet.");
         }
+
+        long memoryAfter = GC.GetTotalMemory(true);
+
+        stopwatch.Stop();
+        Console.WriteLine($"Response time: {stopwatch.ElapsedMilliseconds} ms");
+        Console.WriteLine($"Memory used: {(memoryAfter - memoryBefore) / (1024.0 * 1024.0):F2} MB");
     }
 }
